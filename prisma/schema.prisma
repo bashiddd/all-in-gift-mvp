@@ -32,3 +32,12 @@ model Session {
   refreshToken        String?
   refreshTokenExpires DateTime?
 }
+
+model GiftSettings {
+  id                String   @id @default(cuid())
+  shop              String   @unique
+  enabled           Boolean  @default(true)
+  maxMessageLength  Int      @default(200)
+  wrappingEnabled   Boolean  @default(false)
+  updatedAt         DateTime @updatedAt
+}
