@@ -41,3 +41,15 @@ model GiftSettings {
   wrappingEnabled   Boolean  @default(false)
   updatedAt         DateTime @updatedAt
 }
+
+model GiftOrder {
+  id            String   @id @default(cuid())
+  shop          String
+  orderId       String   @unique
+  recipientName String?
+  message       String?
+  wrapping      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([shop, createdAt])
+}
