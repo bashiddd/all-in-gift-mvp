@@ -32,3 +32,14 @@ model Session {
   refreshToken        String?
   refreshTokenExpires DateTime?
 }
+
+model GiftToken {
+  id        String   @id @default(cuid())
+  token     String   @unique @default(cuid())
+  shop      String
+  orderId   String
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+
+  @@index([shop, createdAt])
+}

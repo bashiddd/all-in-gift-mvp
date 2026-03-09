@@ -1,0 +1,17 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration
+
+api_version = "2026-01"
+
+[[extensions]]
+name = "gift-options"
+handle = "gift-options"
+type = "ui_extension"
+uid = "e9d6ae8a-fcc4-7d7b-852c-d64971c164137e02a950"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.shipping-option-list.render-after"
+
+[extensions.capabilities]
+api_access = true
