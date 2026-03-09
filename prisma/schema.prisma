@@ -33,23 +33,13 @@ model Session {
   refreshTokenExpires DateTime?
 }
 
-model GiftSettings {
-  id                String   @id @default(cuid())
-  shop              String   @unique
-  enabled           Boolean  @default(true)
-  maxMessageLength  Int      @default(200)
-  wrappingEnabled   Boolean  @default(false)
-  updatedAt         DateTime @updatedAt
-}
-
-model GiftOrder {
-  id            String   @id @default(cuid())
-  shop          String
-  orderId       String   @unique
-  recipientName String?
-  message       String?
-  wrapping      Boolean  @default(false)
-  createdAt     DateTime @default(now())
+model GiftToken {
+  id        String   @id @default(cuid())
+  token     String   @unique @default(cuid())
+  shop      String
+  orderId   String
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
 
   @@index([shop, createdAt])
 }

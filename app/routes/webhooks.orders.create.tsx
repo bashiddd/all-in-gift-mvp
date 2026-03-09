@@ -18,29 +18,19 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const attrs = p.note_attributes ?? [];
   const find = (key: string) => attrs.find((a) => a.name === key)?.value ?? "";
 
-  const giftEnabled = find("gift_enabled") === "true";
-  if (!giftEnabled) {
+  const egiftEnabled = find("egift_enabled") === "true";
+  if (!egiftEnabled) {
     return new Response();
   }
 
-  const message = find("gift_message") || null;
-  const giftWrapping = find("gift_wrapping") === "true";
-
-  await db.giftOrder.upsert({
-    where: { orderId },
-    create: {
+  await db.giftToken.create({
+    data: {
       shop,
       orderId,
-      message,
-      wrapping: giftWrapping,
-    },
-    update: {
-      message,
-      wrapping: giftWrapping,
     },
   });
 
-  console.log(`saved gift order: ${orderId}`);
+  console.log(`created gift token for order: ${orderId}`);
 
   return new Response();
 };

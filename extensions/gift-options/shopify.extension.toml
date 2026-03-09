@@ -15,16 +15,3 @@ target = "purchase.checkout.shipping-option-list.render-after"
 
 [extensions.capabilities]
 api_access = true
-
-[extensions.settings]
-[[extensions.settings.fields]]
-key = "max_message_length"
-type = "number_integer"
-name = "メッセージ最大文字数"
-description = "ギフトメッセージの最大文字数（デフォルト: 200）"
-
-[[extensions.settings.fields]]
-key = "wrapping_enabled"
-type = "boolean"
-name = "ラッピングを有効にする"
-description = "チェックアウト画面にラッピングオプションを表示する"
